@@ -1,0 +1,16 @@
+import os
+import zipfile
+
+# Define the Kaggle dataset details
+dataset_owner = 'shashwatwork'
+dataset_name = 'knee-osteoarthritis-dataset-with-severity'
+
+# Create a directory for the dataset if it doesn't exist
+os.makedirs('datasets', exist_ok=True)
+
+# Download the dataset
+!kaggle datasets download -d {dataset_owner}/{dataset_name} -p datasets
+
+# Unzip the dataset
+with zipfile.ZipFile('datasets/knee-osteoarthritis-dataset-with-severity.zip', 'r') as zip_ref:
+    zip_ref.extractall('datasets/knee_osteoarthritis')
